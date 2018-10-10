@@ -1,0 +1,113 @@
+﻿@using System.Text
+@model IEnumerable<GaugeCalibration.Models.Gauge>
+
+@{
+    ViewBag.Title = "Gauges";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br/>
+<div id="container" style="display: none">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h2>@ViewBag.Title</h2>
+            <hr/>
+            <p>@Html.ActionLink("Create New", "Create", "Gauges", null, new { @class = "btn btn-primary" })</p>
+            <table id="gauges" class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Serial)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Plant)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Type)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Range)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Frequency)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Method)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LastCal)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NextCal)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LastComment)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        var link = Url.Action("Entry", "Gauges", new { id = item.Id });
+                    <tr style="cursor: pointer;" onclick="window.location = '@link'">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Serial)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Plant)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Type)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Range)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Frequency)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Method)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastCal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NextCal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td id="ellipsis">
+                            @Html.DisplayFor(modelItem => item.LastComment)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div>
+    <p>
+        <strong>Click:</strong> On a row to update an item | <strong>Edit</strong> to edit item information | <strong>Details</strong> to view comments | <strong>Delete</strong> to remove an item
+    </p>
+</div>
+
+@section scripts{
+
+    <script>
+        $(document).ready(function () {
+            $('#gauges').DataTable();
+        });
+
+        document.getElementById("container").style.display = "";
+    </script>
+}

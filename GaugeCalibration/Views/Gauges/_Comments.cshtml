@@ -1,0 +1,63 @@
+﻿@model IEnumerable<GaugeCalibration.Models.Comment>
+
+<h2>Comments</h2>
+<hr/>
+<p>
+    @Html.ActionLink("Create New", "Create", "Comments", new { id = ViewBag.Id }, new {@class = "btn btn-primary"} )
+</p>
+
+<div id="container" style="display: none">
+    <table id="comments" class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Gauge.Serial)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Text)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var link = Url.Action("Edit", "Comments", new { id = item.Id });
+                <tr style="cursor: pointer;" onclick="window.location = '@link'">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gauge.Serial)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td id="ellipsis">
+                        @Html.DisplayFor(modelItem => item.Text)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", "Comments", new {id = item.Id}, null)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+@Scripts.Render("~/bundles/lib")
+<script type="text/javascript">
+    document.getElementById("container").style.display = "";
+
+    $(document).ready(function () {
+        $('#comments').DataTable();
+    });
+</script>
+

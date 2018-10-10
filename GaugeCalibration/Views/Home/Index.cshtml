@@ -1,0 +1,31 @@
+﻿@model GaugeCalibration.Models.Gauge
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<br />
+<div class="jumbotron">
+    <h1>Letica</h1>
+    <p class="lead">This application tracks plant gauges, comments, and inspection dates.
+        <br/>
+        <br/>
+        Select a plant to filter the results or use "Plant" to view all results.
+    </p>
+    <br/>
+    <p>
+        @using (Html.BeginForm("Index", "Gauges", FormMethod.Get))
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="col-xs-4" style="padding-left: 0px; padding-right: 10px">
+                            @Html.DropDownList("Plant", null, "Plant", htmlAttributes: new { @class = "form-control" })
+                        </div>
+                            <input type="submit" class="btn btn-primary btn-lg" />
+
+                    </div>
+                </div>
+            </div>
+        }
+    </p>
+</div>

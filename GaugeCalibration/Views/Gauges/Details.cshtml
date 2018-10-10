@@ -1,0 +1,102 @@
+﻿@model GaugeCalibration.Models.Gauge
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Gauge</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Serial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Serial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Range)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Range)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Frequency)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Frequency)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Method)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Method)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastCal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastCal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NextCal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NextCal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+    </dl>
+    <br />
+    @Html.Partial("_Comments", Model.Comments, new ViewDataDictionary { { "id", Model.Id } })
+    <div>
+        <p>
+            <strong>Click:</strong> On a row to update a comment | <strong>Delete</strong> to remove a comment
+        </p>
+    </div>
+    @Html.ActionLink("Back to list", "Index", new { plant = Model.Plant })
+</div>

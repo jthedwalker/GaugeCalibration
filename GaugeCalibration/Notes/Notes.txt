@@ -1,0 +1,27 @@
+﻿
+
+
+// CSS to prevent overflow on the comments index page.
+table
+{
+table-layout: fixed; 
+width: 200px;
+}
+table td
+{
+overflow: hidden; 
+text-overflow: ellipsis;
+white-space:nowrap;
+}
+
+
+// Javascript alert message
+        $(document).ready(function () {
+            var count = 0;
+            $(".btn").on("mouseover",function() {
+                if (count == 0) {
+                    alert('Your Message');
+                    count = 1;
+                }
+            });
+        });
